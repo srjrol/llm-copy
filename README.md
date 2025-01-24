@@ -1,15 +1,11 @@
-To update the `README.md` file for your extension, you'll want to provide clear, concise, and helpful information for users. Here's a basic template you can follow, tailored for your "Copy as AI Prompt" extension:
+# **Copy as AI Prompt**
 
----
-
-## **Copy as AI Prompt**
-
-### **Description**
+## **Description**
 The "Copy as AI Prompt" extension for Visual Studio Code allows you to quickly format files or folders into a structured text format suitable for use in AI prompts. This eliminates the need for manual formatting, saving time and effort.
 
 ---
 
-### **Features**
+## **Features**
 - **Right-click to Copy**: Right-click on a file or directory in the Explorer and select **"Copy as AI Prompt"**.
 - **Formatted Output**: Automatically formats file content as:
   ```
@@ -22,7 +18,7 @@ The "Copy as AI Prompt" extension for Visual Studio Code allows you to quickly f
 
 ---
 
-### **How to Use**
+## **How to Use**
 1. Install the extension in Visual Studio Code.
 2. Right-click on a file or folder in the Explorer sidebar.
 3. Select **"Copy as AI Prompt"** from the context menu.
@@ -31,15 +27,16 @@ The "Copy as AI Prompt" extension for Visual Studio Code allows you to quickly f
 
 ---
 
-### **Installation**
-#### From VSIX:
+## **Installation**
+
+### From VSIX:
 1. Download the `.vsix` file from your local build.
 2. Open Visual Studio Code.
 3. Go to the Extensions view (`Ctrl+Shift+X`).
 4. Click on the `...` menu (top-right corner) and select **"Install from VSIX..."**.
 5. Choose the `.vsix` file and install.
 
-#### From Source:
+### From Source:
 1. Clone this repository:
    ```bash
    git clone https://github.com/your-repo/copy-as-ai-prompt
@@ -53,8 +50,8 @@ The "Copy as AI Prompt" extension for Visual Studio Code allows you to quickly f
 
 ---
 
-### **Examples**
-#### Single File
+## **Examples**
+### Single File
 For a file located at `src/app.html`:
 ```
 src\app.html:
@@ -91,7 +88,7 @@ body {
 
 ---
 
-### **Development**
+## **Development**
 To modify the extension:
 1. Clone the repository.
 2. Open the project in Visual Studio Code.
