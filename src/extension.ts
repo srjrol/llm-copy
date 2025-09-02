@@ -16,6 +16,10 @@ const DEFAULT_IGNORE = new Set([
 ]);
 
 let lastChoices: Set<SectionChoice> | null = null;
+vscode.commands.registerCommand('copyAsPrompt.copyAll', (uri, uris) => runCopy(uri, uris, { tree:true, files:true, diags:true }));
+vscode.commands.registerCommand('copyAsPrompt.copyTree', (uri, uris) => runCopy(uri, uris, { tree:true, files:false, diags:false }));
+vscode.commands.registerCommand('copyAsPrompt.copyFiles', (uri, uris) => runCopy(uri, uris, { tree:false, files:true, diags:false }));
+vscode.commands.registerCommand('copyAsPrompt.copyDiagnostics', (uri, uris) => runCopy(uri, uris, { tree:false, files:false, diags:true }));
 
 export function activate(context: vscode.ExtensionContext) {
   const copyCommand = vscode.commands.registerCommand(
