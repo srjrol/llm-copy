@@ -1,36 +1,67 @@
 {
   "name": "llmcopy",
   "displayName": "LLMCopy",
-  "description": "Copy file and relative location for easy LLM prompting.",
+  "description": "Copy file(s)/folder(s) as an AI prompt: tree, files, diagnostics.",
   "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.96.0"
-  },
-"repository": {
-    "type": "git",
-    "url": "https://github.com/srjrol/llm-copy.git"
-},
-
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [],
+  "engines": { "vscode": "^1.96.0" },
+  "repository": { "type": "git", "url": "https://github.com/srjrol/llm-copy.git" },
+  "categories": ["Other"],
   "main": "./dist/extension.js",
-  "commands": [
-    {
-        "command": "copyAsPrompt.copy",
-        "title": "Copy as AI Prompt"
-    }
-],
-  "menus": {
-    "explorer/context": [
-        {
-            "command": "copyAsPrompt.copy",
-            "group": "clipboard",
-            "when": "explorerResourceIsFolder || resourceExtname"
-        }
+
+  "activationEvents": [
+    "onCommand:copyAsPrompt.copyAll",
+    "onCommand:copyAsPrompt.copyTree",
+    "onCommand:copyAsPrompt.copyFiles",
+    "onCommand:copyAsPrompt.copyDiagnostics"
+  ],
+
+  "contributes": {
+    "commands": [
+      {
+        "command": "copyAsPrompt.copyAll",
+        "title": "LLM Copy: Tree + Files + Diagnostics",
+        "category": "LLM Copy"
+      },
+      {
+        "command": "copyAsPrompt.copyTree",
+        "title": "LLM Copy: Tree only",
+        "category": "LLM Copy"
+      },
+      {
+        "command": "copyAsPrompt.copyFiles",
+        "title": "LLM Copy: Files only",
+        "category": "LLM Copy"
+      },
+      {
+        "command": "copyAsPrompt.copyDiagnostics",
+        "title": "LLM Copy: Diagnostics only",
+        "category": "LLM Copy"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        { "command": "copyAsPrompt.copyAll", "group": "navigation@9", "when": "explorerResourceIsFolder || resourceExtname" },
+        { "command": "copyAsPrompt.copyTree", "group": "navigation@9", "when": "explorerResourceIsFolder || resourceExtname" },
+        { "command": "copyAsPrompt.copyFiles", "group": "navigation@9", "when": "explorerResourceIsFolder || resourceExtname" },
+        { "command": "copyAsPrompt.copyDiagnostics", "group": "navigation@9", "when": "explorerResourceIsFolder || resourceExtname" }
+      ],
+      "editor/context": [
+        { "command": "copyAsPrompt.copyAll", "group": "navigation@9" },
+        { "command": "copyAsPrompt.copyFiles", "group": "navigation@9" },
+        { "command": "copyAsPrompt.copyDiagnostics", "group": "navigation@9" }
+      ],
+      "commandPalette": [
+        { "command": "copyAsPrompt.copyAll", "when": "true" },
+        { "command": "copyAsPrompt.copyTree", "when": "true" },
+        { "command": "copyAsPrompt.copyFiles", "when": "true" },
+        { "command": "copyAsPrompt.copyDiagnostics", "when": "true" }
+      ]
+    },
+    "keybindings": [
+      { "command": "copyAsPrompt.copyAll", "key": "ctrl+alt+c", "mac": "cmd+alt+c", "when": "editorTextFocus || filesExplorerFocus" }
     ]
   },
+
   "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "npm run check-types && npm run lint && node esbuild.js",
